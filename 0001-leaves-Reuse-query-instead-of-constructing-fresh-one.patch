@@ -1,0 +1,45 @@
+From efe209179c4ebc638cdf6129ce107d84aedccecb Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ville=20Skytt=C3=A4?= <ville.skytta@iki.fi>
+Date: Sun, 13 Dec 2015 12:48:48 +0200
+Subject: [PATCH] leaves: Reuse query instead of constructing fresh one for
+ each package
+
+Speeds up one run() from ~2.6 seconds to ~1.1 on my system.
+---
+ plugins/leaves.py | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/plugins/leaves.py b/plugins/leaves.py
+index 7ae93f5..31765e8 100644
+--- a/plugins/leaves.py
++++ b/plugins/leaves.py
+@@ -37,7 +37,7 @@ class LeavesCommand(dnf.cli.Command):
+         hawkey, and build the dependency graph and the graph of reverse
+         dependencies.
+         """
+-        sack = dnf.sack.rpmdb_sack(self.base)
++        query = dnf.sack.rpmdb_sack(self.base).query()
+         pkgmap = dict()
+         packages = []
+         depends = []
+@@ -45,7 +45,7 @@ class LeavesCommand(dnf.cli.Command):
+         deps = set()
+         providers = set()
+ 
+-        for i, pkg in enumerate(sack.query()):
++        for i, pkg in enumerate(query):
+             pkgmap[pkg] = i
+             packages.append(pkg)
+             rdepends.append([])
+@@ -55,7 +55,7 @@ class LeavesCommand(dnf.cli.Command):
+                 sreq = str(req)
+                 if sreq.startswith('rpmlib(') or sreq == 'solvable:prereqmarker':
+                     continue
+-                for dpkg in sack.query().filter(provides=req):
++                for dpkg in query.filter(provides=req):
+                     providers.add(pkgmap[dpkg])
+                 if i not in providers:
+                     deps.update(providers)
+-- 
+2.14.1
+
