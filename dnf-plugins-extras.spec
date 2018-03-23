@@ -53,6 +53,7 @@ BuildRequires:	python-devel
 BuildRequires:	python-dnf >= %{dnf_lowest_compatible}
 BuildRequires:	python-dnf < %{dnf_not_compatible}
 BuildRequires:	python-nose
+BuildRequires:	python-setuptools
 
 %if %{with pykickstart}
 BuildRequires:	python-kickstart
