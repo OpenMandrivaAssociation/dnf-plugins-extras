@@ -40,8 +40,8 @@ BuildRequires:	python2-dnf >= %{dnf_lowest_compatible}
 BuildRequires:	python2-dnf < %{dnf_not_compatible}
 
 BuildRequires:	python2-nose
-BuildRequires:	python2-devel
-
+BuildRequires:	pkgconfig(python2)
+BuildRequires:	python2-setuptools
 BuildRequires:	python-sphinx
 
 %if %{with pykickstart}
