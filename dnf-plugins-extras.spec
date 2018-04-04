@@ -32,9 +32,8 @@ BuildArch:      noarch
 BuildRequires:  cmake
 BuildRequires:  gettext
 BuildRequires:  pkgconfig(systemd)
-BuildRequires:  systemd
 
-BuildRequires:  python3-devel
+BuildRequires:  pkgconfig(python3)
 BuildRequires:  python-setuptools
 BuildRequires:  python-dnf >= %{dnf_lowest_compatible}
 BuildRequires:  python-dnf < %{dnf_not_compatible}
@@ -129,7 +128,6 @@ Obsoletes:      fedup < 0.9.4
 Obsoletes:      dnf-plugin-system-upgrade < 0.10
 Conflicts:      python2-dnf-plugin-system-upgrade < %{version}-%{release}
 BuildRequires:  pkgconfig(systemd)
-BuildRequires:  systemd
 BuildRequires:  python-systemd
 %{?systemd_requires}
 
@@ -182,9 +180,9 @@ make doc-man
 %make_install -C build
 
 mkdir -p %{buildroot}%{_unitdir}/system-update.target.wants/
-pushd %{buildroot}%{_unitdir}/system-update.target.wants/
+cd %{buildroot}%{_unitdir}/system-update.target.wants/
   ln -sr ../dnf-system-upgrade.service
-popd
+cd -
 
 %find_lang %{name}
 
