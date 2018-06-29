@@ -1,5 +1,5 @@
-%{!?dnf_lowest_compatible: %global dnf_lowest_compatible 2.7.1}
-%{!?dnf_not_compatible: %global dnf_not_compatible 3.0}
+%{!?dnf_lowest_compatible: %global dnf_lowest_compatible 3.0.0}
+%{!?dnf_not_compatible: %global dnf_not_compatible 4.0}
 %global dnf_plugins_extra_obsolete 2.0.0
 
 # OpenMandriva does not have a useful version of pykickstart
@@ -16,7 +16,7 @@
 
 
 Name:           dnf-plugins-extras
-Version:        2.0.5
+Version:        3.0.0
 Release:        1
 Summary:        Extras Plugins for DNF
 Group:          System/Configuration/Packaging
@@ -31,7 +31,10 @@ Patch1001:      dnf-plugins-extras-2.0.5-Fix-detection-of-Python-2.patch
 BuildArch:      noarch
 BuildRequires:  cmake
 BuildRequires:  gettext
+BuildRequires:	systemd
 BuildRequires:  pkgconfig(systemd)
+BuildRequires:	python3dist(systemd-python)
+BuildRequires:	systemd
 
 BuildRequires:  pkgconfig(python3)
 BuildRequires:  python-setuptools
@@ -39,7 +42,6 @@ BuildRequires:  python-dnf >= %{dnf_lowest_compatible}
 BuildRequires:  python-dnf < %{dnf_not_compatible}
 BuildRequires:  python-nose
 BuildRequires:  python-sphinx
-BuildRequires:  python-systemd
 
 %description
 Extras Plugins for DNF.
@@ -194,7 +196,11 @@ rm -rf %{buildroot}%{_mandir}/man8/dnf.plugin.kickstart.*
 
 %if ! %{with rpmconf}
 rm -rf %{buildroot}%{python3_sitelib}/dnf-plugins/rpmconf.*
+rm -rf %{buildroot}%{python3_sitelib}/dnf-plugins/rpm_conf.*
 rm -rf %{buildroot}%{python3_sitelib}/dnf-plugins/__pycache__/rpmconf.*
+rm -rf %{buildroot}%{python3_sitelib}/dnf-plugins/__pycache__/rpm_conf.*
+rm -rf %{buildroot}%{_mandir}/man8/dnf.plugin.rpmconf.*
+rm -rf %{buildroot}%{_sysconfdir}/dnf/plugins/rpmconf.conf
 rm -rf %{buildroot}%{_mandir}/man8/dnf.plugin.rpmconf.*
 %endif
 
@@ -253,6 +259,7 @@ PYTHONPATH="%{buildroot}%{python3_sitelib}:%{buildroot}%{python3_sitelib}/dnf-pl
 %files -n python-dnf-plugin-system-upgrade
 %{_unitdir}/dnf-system-upgrade.service
 %{_unitdir}/system-update.target.wants/dnf-system-upgrade.service
+%{_unitdir}/dnf-system-upgrade-cleanup.service
 %{python3_sitelib}/dnf-plugins/system_upgrade.py
 %{python3_sitelib}/dnf-plugins/__pycache__/system_upgrade.*
 %{_mandir}/man8/dnf.plugin.system-upgrade.*
