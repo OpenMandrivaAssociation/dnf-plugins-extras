@@ -35,6 +35,14 @@ BuildRequires:	systemd
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:	python3dist(systemd-python)
 BuildRequires:	systemd
+BuildRequires:  dnf >= 3.0.0
+BuildRequires:  pkgconfig(libdnf) >= 0.15.0
+BuildRequires:  python-libdnf
+BuildRequires:  python3dist(pygobject)
+BuildRequires:  pkgconfig(modulemd)
+BuildRequires:  typelib(Modulemd)
+BuildRequires:  typelib(GObject)
+BuildRequires:  %{_lib}glib-gir2.0
 
 BuildRequires:  pkgconfig(python3)
 BuildRequires:  python-setuptools
