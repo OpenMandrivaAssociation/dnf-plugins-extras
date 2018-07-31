@@ -16,7 +16,7 @@
 
 
 Name:           dnf-plugins-extras
-Version:        3.0.0
+Version:        3.0.1
 Release:        1
 Summary:        Extras Plugins for DNF
 Group:          System/Configuration/Packaging
@@ -31,10 +31,9 @@ Patch1001:      dnf-plugins-extras-2.0.5-Fix-detection-of-Python-2.patch
 BuildArch:      noarch
 BuildRequires:  cmake
 BuildRequires:  gettext
-BuildRequires:	systemd
+BuildRequires:	systemd-macros
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:	python3dist(systemd-python)
-BuildRequires:	systemd
 BuildRequires:  dnf >= 3.0.0
 BuildRequires:  pkgconfig(libdnf) >= 0.15.0
 BuildRequires:  python-libdnf
@@ -68,7 +67,6 @@ Conflicts:      python2-%{name}-common < %{version}-%{release}
 
 %description -n python-%{name}-common
 Common files for Extras Plugins for DNF, Python 3 version.
-
 
 %if %{with pykickstart}
 %package -n python-dnf-plugin-kickstart
@@ -179,7 +177,6 @@ Tor is working and avoids leaking the hostname by using the proper SOCKS5 interf
 
 %prep
 %autosetup -n %{name}-%{version}%{?prerel:-%{prerel}} -p1
-
 
 %build
 %cmake -DPYTHON_DESIRED:str=3
