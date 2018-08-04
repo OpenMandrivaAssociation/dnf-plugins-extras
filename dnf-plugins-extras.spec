@@ -24,10 +24,6 @@ License:        GPLv2+
 URL:            https://github.com/rpm-software-management/%{name}
 Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
 
-
-# OpenMandriva specific patches
-Patch1001:      dnf-plugins-extras-2.0.5-Fix-detection-of-Python-2.patch
-
 BuildArch:      noarch
 BuildRequires:  cmake
 BuildRequires:  gettext
@@ -235,7 +231,6 @@ PYTHONPATH="%{buildroot}%{python3_sitelib}:%{buildroot}%{python3_sitelib}/dnf-pl
 
 %files -n python-%{name}-common -f %{name}.lang
 %{python3_sitelib}/dnfpluginsextras/
-%dir %{python3_sitelib}/dnf-plugins/__pycache__/
 %license COPYING
 %doc AUTHORS README.rst
 
@@ -266,7 +261,6 @@ PYTHONPATH="%{buildroot}%{python3_sitelib}:%{buildroot}%{python3_sitelib}/dnf-pl
 %{_unitdir}/system-update.target.wants/dnf-system-upgrade.service
 %{_unitdir}/dnf-system-upgrade-cleanup.service
 %{python3_sitelib}/dnf-plugins/system_upgrade.py
-%{python3_sitelib}/dnf-plugins/__pycache__/system_upgrade.*
 %{_mandir}/man8/dnf.plugin.system-upgrade.*
 
 %if %{with tracer}
@@ -279,5 +273,4 @@ PYTHONPATH="%{buildroot}%{python3_sitelib}:%{buildroot}%{python3_sitelib}/dnf-pl
 %files -n python-dnf-plugin-torproxy
 %config(noreplace) %{_sysconfdir}/dnf/plugins/torproxy.conf
 %{python3_sitelib}/dnf-plugins/torproxy.*
-%{python3_sitelib}/dnf-plugins/__pycache__/torproxy.*
 %{_mandir}/man8/dnf.plugin.torproxy.*
