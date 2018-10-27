@@ -1,5 +1,4 @@
-%{!?dnf_lowest_compatible: %global dnf_lowest_compatible 3.0.0}
-%{!?dnf_not_compatible: %global dnf_not_compatible 4.0}
+%{!?dnf_lowest_compatible: %global dnf_lowest_compatible 4.0.0}
 %global dnf_plugins_extra_obsolete 2.0.0
 
 # OpenMandriva does not have a useful version of pykickstart
@@ -17,7 +16,7 @@
 
 Name:		dnf-plugins-extras
 Version:	3.0.2
-Release:	1
+Release:	2
 Summary:	Extras Plugins for DNF
 Group:		System/Configuration/Packaging
 License:	GPLv2+
@@ -41,7 +40,6 @@ BuildRequires:	%{_lib}glib-gir2.0
 BuildRequires:	pkgconfig(python3)
 BuildRequires:	python-setuptools
 BuildRequires:	python-dnf >= %{dnf_lowest_compatible}
-BuildRequires:	python-dnf < %{dnf_not_compatible}
 BuildRequires:	python-nose
 BuildRequires:	python-sphinx
 
@@ -52,7 +50,6 @@ Extras Plugins for DNF.
 Summary:	Common files for Extras Plugins for DNF
 Group:		System/Configuration/Packaging
 Requires:	python-dnf >= %{dnf_lowest_compatible}
-Requires:	python-dnf < %{dnf_not_compatible}
 Provides:	%{name}-common = %{version}-%{release}
 Obsoletes:	%{name}-common < %{version}-%{release}
 Obsoletes:	python-%{name}-common < %{version}-%{release}
