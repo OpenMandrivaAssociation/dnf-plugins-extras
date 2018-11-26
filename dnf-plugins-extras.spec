@@ -15,8 +15,8 @@
 
 
 Name:		dnf-plugins-extras
-Version:	3.0.2
-Release:	3
+Version:	4.0.0
+Release:	1
 Summary:	Extras Plugins for DNF
 Group:		System/Configuration/Packaging
 License:	GPLv2+
