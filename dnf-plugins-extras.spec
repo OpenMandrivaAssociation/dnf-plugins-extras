@@ -15,13 +15,13 @@
 
 
 Name:		dnf-plugins-extras
-Version:	4.0.2
+Version:	4.0.4
 Release:	1
 Summary:	Extras Plugins for DNF
 Group:		System/Configuration/Packaging
 License:	GPLv2+
 URL:		https://github.com/rpm-software-management/%{name}
-Source0:	https://github.com/rpm-software-management/dnf-plugins-extras/archive/%{version}.tar.gz
+Source0:	https://github.com/rpm-software-management/dnf-plugins-extras/archive/%{name}-%{version}.tar.gz
 Patch0:		dnf-plugins-core-4.0.4-sphinx-build.patch
 
 BuildArch:	noarch
