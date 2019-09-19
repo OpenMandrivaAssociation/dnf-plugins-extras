@@ -167,6 +167,17 @@ Obsoletes:	python-%{name}-torproxy < %{dnf_plugins_extra_obsolete}
 Tor proxy plugin forces DNF to use Tor to download packages. It makes sure that
 Tor is working and avoids leaking the hostname by using the proper SOCKS5 interface.
 
+%package -n python-dnf-plugin-showvars
+Summary:	Showvars Plugin for DNF
+Group:		System/Configuration/Packaging
+Requires:	python-%{name}-common = %{version}-%{release}
+Provides:	dnf-plugin-showvars = %{version}-%{release}
+Provides:	%{name}-showvars = %{version}-%{release}
+Provides:	python-%{name}-showvars = %{version}-%{release}
+
+%description -n python-dnf-plugin-showvars
+This plugin dumps the current value of any defined DNF variables.  For example
+$releasever and $basearch.
 
 %prep
 %autosetup -n %{name}-%{version}%{?prerel:-%{prerel}} -p1
@@ -273,3 +284,8 @@ PYTHONPATH="%{buildroot}%{python3_sitelib}:%{buildroot}%{python3_sitelib}/dnf-pl
 %{python3_sitelib}/dnf-plugins/torproxy.*
 %{python3_sitelib}/dnf-plugins/__pycache__/torproxy*.pyc
 %{_mandir}/man8/dnf.plugin.torproxy.*
+
+%files -n python-dnf-plugin-showvars
+%{python3_sitelib}/dnf-plugins/showvars.*
+%{python3_sitelib}/dnf-plugins/__pycache__/showvars.*
+%{_mandir}/man8/dnf.plugin.showvars.*
