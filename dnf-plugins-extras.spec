@@ -15,7 +15,7 @@
 
 
 Name:		dnf-plugins-extras
-Version:	4.0.4
+Version:	4.0.5
 Release:	1
 Summary:	Extras Plugins for DNF
 Group:		System/Configuration/Packaging
