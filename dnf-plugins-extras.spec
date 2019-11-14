@@ -119,6 +119,7 @@ Obsoletes:	dnf-plugin-system-upgrade < 0.10
 Conflicts:	python2-dnf-plugin-system-upgrade < %{version}-%{release}
 BuildRequires:	systemd-macros
 BuildRequires:	python-systemd
+BuildRequires:	python3dist(systemd-python)
 %{?systemd_requires}
 
 %description -n python-dnf-plugin-system-upgrade
