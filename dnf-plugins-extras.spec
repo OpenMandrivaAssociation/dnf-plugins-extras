@@ -118,6 +118,7 @@ Obsoletes:	fedup < 0.9.4
 Obsoletes:	dnf-plugin-system-upgrade < 0.10
 Conflicts:	python2-dnf-plugin-system-upgrade < %{version}-%{release}
 BuildRequires:	systemd-macros
+BuildRequires:	pkgconfig(libsystemd)
 BuildRequires:	python-systemd
 BuildRequires:	python3dist(systemd-python)
 %{?systemd_requires}
