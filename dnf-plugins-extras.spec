@@ -1,4 +1,4 @@
-%{!?dnf_lowest_compatible: %global dnf_lowest_compatible 4.0.0}
+%{!?dnf_lowest_compatible: %global dnf_lowest_compatible 4.2.1}
 %global dnf_plugins_extra_obsolete 2.0.0
 
 # OpenMandriva does not have a useful version of pykickstart
@@ -15,7 +15,7 @@
 
 
 Name:		dnf-plugins-extras
-Version:	4.0.5
+Version:	4.0.8
 Release:	1
 Summary:	Extras Plugins for DNF
 Group:		System/Configuration/Packaging
@@ -27,17 +27,6 @@ Patch0:		dnf-plugins-core-4.0.4-sphinx-build.patch
 BuildArch:	noarch
 BuildRequires:	cmake
 BuildRequires:	gettext
-BuildRequires:	systemd-macros
-BuildRequires:	pkgconfig(systemd)
-BuildRequires:	python3dist(systemd-python)
-BuildRequires:	dnf >= 3.0.0
-BuildRequires:	pkgconfig(libdnf) >= 0.15.0
-BuildRequires:	python-libdnf
-BuildRequires:	python3dist(pygobject)
-BuildRequires:	pkgconfig(modulemd)
-BuildRequires:	typelib(Modulemd)
-BuildRequires:	typelib(GObject)
-BuildRequires:	%{_lib}glib-gir2.0
 BuildRequires:	pkgconfig(python3)
 BuildRequires:	python-setuptools
 BuildRequires:	python-dnf >= %{dnf_lowest_compatible}
@@ -128,7 +117,7 @@ Obsoletes:	python-%{name}-system-upgrade < %{dnf_plugins_extra_obsolete}
 Obsoletes:	fedup < 0.9.4
 Obsoletes:	dnf-plugin-system-upgrade < 0.10
 Conflicts:	python2-dnf-plugin-system-upgrade < %{version}-%{release}
-BuildRequires:	pkgconfig(systemd)
+BuildRequires:	systemd-macros
 BuildRequires:	python-systemd
 %{?systemd_requires}
 
