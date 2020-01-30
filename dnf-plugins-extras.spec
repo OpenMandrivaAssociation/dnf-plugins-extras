@@ -5,7 +5,7 @@
 %bcond_with pykickstart
 
 # OpenMandriva does not have rpmconf
-%bcond_with rpmconf
+%bcond_without rpmconf
 
 # OpenMandriva does not have snapper
 %bcond_with snapper
@@ -16,7 +16,7 @@
 
 Name:		dnf-plugins-extras
 Version:	4.0.8
-Release:	2
+Release:	3
 Summary:	Extras Plugins for DNF
 Group:		System/Configuration/Packaging
 License:	GPLv2+
