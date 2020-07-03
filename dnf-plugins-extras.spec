@@ -245,7 +245,7 @@ PYTHONPATH="%{buildroot}%{python3_sitelib}:%{buildroot}%{python3_sitelib}/dnf-pl
 %config(noreplace) %{_sysconfdir}/dnf/plugins/rpmconf.conf
 %{python3_sitelib}/dnf-plugins/rpm_conf.*
 %{python3_sitelib}/dnf-plugins/__pycache__/rpm_conf.*
-%{_mandir}/man8/dnf.plugin.rpmconf.*
+%{_mandir}/man8/dnf-rpmconf.*
 %endif
 
 %if %{with snapper}
