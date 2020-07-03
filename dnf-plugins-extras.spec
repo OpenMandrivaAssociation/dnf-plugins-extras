@@ -191,7 +191,7 @@ cd -
 %if ! %{with pykickstart}
 rm -rf %{buildroot}%{python3_sitelib}/dnf-plugins/kickstart.*
 rm -rf %{buildroot}%{python3_sitelib}/dnf-plugins/__pycache__/kickstart.*
-rm -rf %{buildroot}%{_mandir}/man8/dnf.plugin.kickstart.*
+rm -rf %{buildroot}%{_mandir}/man8/dnf-kickstart.*
 %endif
 
 %if ! %{with rpmconf}
@@ -199,23 +199,21 @@ rm -rf %{buildroot}%{python3_sitelib}/dnf-plugins/rpmconf.*
 rm -rf %{buildroot}%{python3_sitelib}/dnf-plugins/rpm_conf.*
 rm -rf %{buildroot}%{python3_sitelib}/dnf-plugins/__pycache__/rpmconf.*
 rm -rf %{buildroot}%{python3_sitelib}/dnf-plugins/__pycache__/rpm_conf.*
-rm -rf %{buildroot}%{_mandir}/man8/dnf.plugin.rpmconf.*
 rm -rf %{buildroot}%{_sysconfdir}/dnf/plugins/rpmconf.conf
-rm -rf %{buildroot}%{_mandir}/man8/dnf.plugin.rpmconf.*
+rm -rf %{buildroot}%{_mandir}/man8/dnf-rpmconf.*
 %endif
 
 %if ! %{with snapper}
 rm -rf %{buildroot}%{python3_sitelib}/dnf-plugins/snapper.*
 rm -rf %{buildroot}%{python3_sitelib}/dnf-plugins/__pycache__/snapper.*
-rm -rf %{buildroot}%{_mandir}/man8/dnf.plugin.snapper.*
+rm -rf %{buildroot}%{_mandir}/man8/dnf-snapper.*
 %endif
 
 %if ! %{with tracer}
 rm -rf %{buildroot}%{python3_sitelib}/dnf-plugins/tracer.*
 rm -rf %{buildroot}%{python3_sitelib}/dnf-plugins/__pycache__/tracer.*
-rm -rf %{buildroot}%{_mandir}/man8/dnf.plugin.tracer.*
+rm -rf %{buildroot}%{_mandir}/man8/dnf-tracer.*
 %endif
-
 
 %check
 %if ! %{with pykickstart}
@@ -237,7 +235,7 @@ PYTHONPATH="%{buildroot}%{python3_sitelib}:%{buildroot}%{python3_sitelib}/dnf-pl
 %files -n python-dnf-plugin-kickstart
 %{python3_sitelib}/dnf-plugins/kickstart.*
 %{python3_sitelib}/dnf-plugins/__pycache__/kickstart.*
-%{_mandir}/man8/dnf.plugin.kickstart.*
+%{_mandir}/man8/dnf-kickstart.*
 %endif
 
 %if %{with rpmconf}
@@ -252,7 +250,7 @@ PYTHONPATH="%{buildroot}%{python3_sitelib}:%{buildroot}%{python3_sitelib}/dnf-pl
 %files -n python-dnf-plugin-snapper
 %{python3_sitelib}/dnf-plugins/snapper.*
 %{python3_sitelib}/dnf-plugins/__pycache__/snapper.*
-%{_mandir}/man8/dnf.plugin.snapper.*
+%{_mandir}/man8/dnf-snapper.*
 %endif
 
 %files -n python-dnf-plugin-system-upgrade
@@ -266,14 +264,16 @@ PYTHONPATH="%{buildroot}%{python3_sitelib}:%{buildroot}%{python3_sitelib}/dnf-pl
 %files -n python-dnf-plugin-tracer
 %{python3_sitelib}/dnf-plugins/tracer.*
 %{python3_sitelib}/dnf-plugins/__pycache__/tracer.*
-%{_mandir}/man8/dnf.plugin.tracer.*
+%{_mandir}/man8/dnf-tracer.*
 %endif
 
 %files -n python-dnf-plugin-torproxy
 %config(noreplace) %{_sysconfdir}/dnf/plugins/torproxy.conf
 %{python3_sitelib}/dnf-plugins/torproxy.*
 %{python3_sitelib}/dnf-plugins/__pycache__/torproxy*.pyc
+%{_mandir}/man8/dnf-torproxy.*
 
 %files -n python-dnf-plugin-showvars
 %{python3_sitelib}/dnf-plugins/showvars.*
 %{python3_sitelib}/dnf-plugins/__pycache__/showvars.*
+%{_mandir}/man8/dnf-showvars.*
