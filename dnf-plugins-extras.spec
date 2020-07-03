@@ -273,9 +273,7 @@ PYTHONPATH="%{buildroot}%{python3_sitelib}:%{buildroot}%{python3_sitelib}/dnf-pl
 %config(noreplace) %{_sysconfdir}/dnf/plugins/torproxy.conf
 %{python3_sitelib}/dnf-plugins/torproxy.*
 %{python3_sitelib}/dnf-plugins/__pycache__/torproxy*.pyc
-%{_mandir}/man8/dnf.plugin.torproxy.*
 
 %files -n python-dnf-plugin-showvars
 %{python3_sitelib}/dnf-plugins/showvars.*
 %{python3_sitelib}/dnf-plugins/__pycache__/showvars.*
-%{_mandir}/man8/dnf.plugin.showvars.*
