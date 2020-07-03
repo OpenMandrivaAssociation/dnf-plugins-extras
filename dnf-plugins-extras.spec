@@ -13,7 +13,6 @@
 # OpenMandriva does not have tracer
 %bcond_with tracer
 
-
 Name:		dnf-plugins-extras
 Version:	4.0.10
 Release:	1
@@ -259,6 +258,7 @@ PYTHONPATH="%{buildroot}%{python3_sitelib}:%{buildroot}%{python3_sitelib}/dnf-pl
 %{_unitdir}/dnf-system-upgrade-cleanup.service
 %{python3_sitelib}/dnf-plugins/system_upgrade.py
 %{python3_sitelib}/dnf-plugins/__pycache__/system_upgrade*.pyc
+%{_mandir}/man8/dnf-system-upgrade.*
 
 %if %{with tracer}
 %files -n python-dnf-plugin-tracer
