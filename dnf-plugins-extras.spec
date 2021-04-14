@@ -14,7 +14,7 @@
 %bcond_with tracer
 
 Name:		dnf-plugins-extras
-Version:	4.0.13
+Version:	4.0.14
 Release:	1
 Summary:	Extras Plugins for DNF
 Group:		System/Configuration/Packaging
@@ -108,6 +108,8 @@ Group:		System/Configuration/Packaging
 Requires:	python-%{name}-common = %{version}-%{release}
 Requires:	python-systemd
 Provides:	dnf-command(system-upgrade)
+Provides:	dnf-command(offline-upgrade)
+Provides:	dnf-command(offline-distrosync)
 Provides:	%{name}-system-upgrade = %{version}-%{release}
 Provides:	system-upgrade = %{version}-%{release}
 Provides:	dnf-plugin-system-upgrade = %{version}-%{release}
@@ -123,8 +125,8 @@ BuildRequires:	python3dist(systemd-python)
 %{?systemd_requires}
 
 %description -n python-dnf-plugin-system-upgrade
-System Upgrade Plugin for DNF, Python 3 version. Enables offline system upgrades
-using the "dnf system-upgrade" command.
+System Upgrade Plugin for DNF, Python 3 version. Enables offline system upgrades and distrosync
+using three commands: ``system-upgrade``, ``offline-upgrade``, and ``offline-distrosync``.
 
 %if %{with tracer}
 %package -n python-dnf-plugin-tracer
