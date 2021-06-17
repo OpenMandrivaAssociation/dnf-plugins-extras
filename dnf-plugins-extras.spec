@@ -1,4 +1,4 @@
-%{!?dnf_lowest_compatible: %global dnf_lowest_compatible 4.2.1}
+%{!?dnf_lowest_compatible: %global dnf_lowest_compatible 4.4.3}
 %global dnf_plugins_extra_obsolete 2.0.0
 
 # OpenMandriva does not have a useful version of pykickstart
@@ -14,7 +14,7 @@
 %bcond_with tracer
 
 Name:		dnf-plugins-extras
-Version:	4.0.14
+Version:	4.0.15
 Release:	1
 Summary:	Extras Plugins for DNF
 Group:		System/Configuration/Packaging
@@ -191,28 +191,23 @@ cd -
 
 %if ! %{with pykickstart}
 rm -rf %{buildroot}%{python3_sitelib}/dnf-plugins/kickstart.*
-rm -rf %{buildroot}%{python3_sitelib}/dnf-plugins/__pycache__/kickstart.*
 rm -rf %{buildroot}%{_mandir}/man8/dnf-kickstart.*
 %endif
 
 %if ! %{with rpmconf}
 rm -rf %{buildroot}%{python3_sitelib}/dnf-plugins/rpmconf.*
 rm -rf %{buildroot}%{python3_sitelib}/dnf-plugins/rpm_conf.*
-rm -rf %{buildroot}%{python3_sitelib}/dnf-plugins/__pycache__/rpmconf.*
-rm -rf %{buildroot}%{python3_sitelib}/dnf-plugins/__pycache__/rpm_conf.*
 rm -rf %{buildroot}%{_sysconfdir}/dnf/plugins/rpmconf.conf
 rm -rf %{buildroot}%{_mandir}/man8/dnf-rpmconf.*
 %endif
 
 %if ! %{with snapper}
 rm -rf %{buildroot}%{python3_sitelib}/dnf-plugins/snapper.*
-rm -rf %{buildroot}%{python3_sitelib}/dnf-plugins/__pycache__/snapper.*
 rm -rf %{buildroot}%{_mandir}/man8/dnf-snapper.*
 %endif
 
 %if ! %{with tracer}
 rm -rf %{buildroot}%{python3_sitelib}/dnf-plugins/tracer.*
-rm -rf %{buildroot}%{python3_sitelib}/dnf-plugins/__pycache__/tracer.*
 rm -rf %{buildroot}%{_mandir}/man8/dnf-tracer.*
 %endif
 
@@ -225,8 +220,6 @@ rm -rf tests/test_kickstart.*
 rm -rf tests/test_rpmconf.*
 %endif
 
-PYTHONPATH="%{buildroot}%{python3_sitelib}:%{buildroot}%{python3_sitelib}/dnf-plugins/" nosetests-%{python3_version} -s tests/
-
 %files -n python-%{name}-common -f %{name}.lang
 %{python3_sitelib}/dnfpluginsextras/
 %license COPYING
@@ -235,23 +228,20 @@ PYTHONPATH="%{buildroot}%{python3_sitelib}:%{buildroot}%{python3_sitelib}/dnf-pl
 %if %{with pykickstart}
 %files -n python-dnf-plugin-kickstart
 %{python3_sitelib}/dnf-plugins/kickstart.*
-%{python3_sitelib}/dnf-plugins/__pycache__/kickstart.*
-%{_mandir}/man8/dnf-kickstart.*
+%doc %{_mandir}/man8/dnf-kickstart.*
 %endif
 
 %if %{with rpmconf}
 %files -n python-dnf-plugin-rpmconf
 %config(noreplace) %{_sysconfdir}/dnf/plugins/rpmconf.conf
 %{python3_sitelib}/dnf-plugins/rpm_conf.*
-%{python3_sitelib}/dnf-plugins/__pycache__/rpm_conf.*
-%{_mandir}/man8/dnf-rpmconf.*
+%doc %{_mandir}/man8/dnf-rpmconf.*
 %endif
 
 %if %{with snapper}
 %files -n python-dnf-plugin-snapper
 %{python3_sitelib}/dnf-plugins/snapper.*
-%{python3_sitelib}/dnf-plugins/__pycache__/snapper.*
-%{_mandir}/man8/dnf-snapper.*
+%doc %{_mandir}/man8/dnf-snapper.*
 %endif
 
 %files -n python-dnf-plugin-system-upgrade
@@ -259,23 +249,19 @@ PYTHONPATH="%{buildroot}%{python3_sitelib}:%{buildroot}%{python3_sitelib}/dnf-pl
 %{_unitdir}/system-update.target.wants/dnf-system-upgrade.service
 %{_unitdir}/dnf-system-upgrade-cleanup.service
 %{python3_sitelib}/dnf-plugins/system_upgrade.py
-%{python3_sitelib}/dnf-plugins/__pycache__/system_upgrade*.pyc
-%{_mandir}/man8/dnf-system-upgrade.*
+%doc %{_mandir}/man8/dnf-system-upgrade.*
 
 %if %{with tracer}
 %files -n python-dnf-plugin-tracer
 %{python3_sitelib}/dnf-plugins/tracer.*
-%{python3_sitelib}/dnf-plugins/__pycache__/tracer.*
-%{_mandir}/man8/dnf-tracer.*
+%doc %{_mandir}/man8/dnf-tracer.*
 %endif
 
 %files -n python-dnf-plugin-torproxy
 %config(noreplace) %{_sysconfdir}/dnf/plugins/torproxy.conf
 %{python3_sitelib}/dnf-plugins/torproxy.*
-%{python3_sitelib}/dnf-plugins/__pycache__/torproxy*.pyc
-%{_mandir}/man8/dnf-torproxy.*
+%doc %{_mandir}/man8/dnf-torproxy.*
 
 %files -n python-dnf-plugin-showvars
 %{python3_sitelib}/dnf-plugins/showvars.*
-%{python3_sitelib}/dnf-plugins/__pycache__/showvars.*
-%{_mandir}/man8/dnf-showvars.*
+%doc %{_mandir}/man8/dnf-showvars.*
