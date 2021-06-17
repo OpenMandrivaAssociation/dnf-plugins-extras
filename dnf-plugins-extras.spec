@@ -1,4 +1,4 @@
-%{!?dnf_lowest_compatible: %global dnf_lowest_compatible 4.2.1}
+%{!?dnf_lowest_compatible: %global dnf_lowest_compatible 4.4.3}
 %global dnf_plugins_extra_obsolete 2.0.0
 
 # OpenMandriva does not have a useful version of pykickstart
@@ -14,7 +14,7 @@
 %bcond_with tracer
 
 Name:		dnf-plugins-extras
-Version:	4.0.14
+Version:	4.0.15
 Release:	1
 Summary:	Extras Plugins for DNF
 Group:		System/Configuration/Packaging
