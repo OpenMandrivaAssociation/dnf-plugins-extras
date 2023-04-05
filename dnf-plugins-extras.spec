@@ -14,8 +14,8 @@
 %bcond_with tracer
 
 Name:		dnf-plugins-extras
-Version:	4.0.17
-Release:	2
+Version:	4.1.0
+Release:	1
 Summary:	Extras Plugins for DNF
 Group:		System/Configuration/Packaging
 License:	GPLv2+
@@ -31,6 +31,7 @@ BuildRequires:	python-setuptools
 BuildRequires:	python-dnf >= %{dnf_lowest_compatible}
 BuildRequires:	python-nose
 BuildRequires:	python-sphinx
+Obsoletes:	python-dnf-plugin-system-upgrade < 4.1.0
 
 %description
 Extras Plugins for DNF.
@@ -102,32 +103,6 @@ Obsoletes:	python-%{name}-snapper < %{dnf_plugins_extra_obsolete}
 Snapper Plugin for DNF, Python 3 version. Creates snapshot every transaction.
 %endif
 
-%package -n python-dnf-plugin-system-upgrade
-Summary:	System Upgrade Plugin for DNF
-Group:		System/Configuration/Packaging
-Requires:	python-%{name}-common = %{version}-%{release}
-Requires:	python-systemd
-Provides:	dnf-command(system-upgrade)
-Provides:	dnf-command(offline-upgrade)
-Provides:	dnf-command(offline-distrosync)
-Provides:	%{name}-system-upgrade = %{version}-%{release}
-Provides:	system-upgrade = %{version}-%{release}
-Provides:	dnf-plugin-system-upgrade = %{version}-%{release}
-Provides:	python-%{name}-system-upgrade = %{version}-%{release}
-Obsoletes:	python-%{name}-system-upgrade < %{dnf_plugins_extra_obsolete}
-Obsoletes:	fedup < 0.9.4
-Obsoletes:	dnf-plugin-system-upgrade < 0.10
-Conflicts:	python2-dnf-plugin-system-upgrade < %{version}-%{release}
-BuildRequires:	systemd-macros
-BuildRequires:	pkgconfig(libsystemd)
-BuildRequires:	python-systemd
-BuildRequires:	python3dist(systemd-python)
-%{?systemd_requires}
-
-%description -n python-dnf-plugin-system-upgrade
-System Upgrade Plugin for DNF, Python 3 version. Enables offline system upgrades and distrosync
-using three commands: ``system-upgrade``, ``offline-upgrade``, and ``offline-distrosync``.
-
 %if %{with tracer}
 %package -n python-dnf-plugin-tracer
 Summary:	Tracer Plugin for DNF
@@ -181,11 +156,6 @@ make doc-man
 
 %install
 %make_install -C build
-
-mkdir -p %{buildroot}%{_unitdir}/system-update.target.wants/
-cd %{buildroot}%{_unitdir}/system-update.target.wants/
-  ln -sr ../dnf-system-upgrade.service
-cd -
 
 %find_lang %{name}
 
@@ -243,13 +213,6 @@ rm -rf tests/test_rpmconf.*
 %{python3_sitelib}/dnf-plugins/snapper.*
 %doc %{_mandir}/man8/dnf-snapper.*
 %endif
-
-%files -n python-dnf-plugin-system-upgrade
-%{_unitdir}/dnf-system-upgrade.service
-%{_unitdir}/system-update.target.wants/dnf-system-upgrade.service
-%{_unitdir}/dnf-system-upgrade-cleanup.service
-%{python3_sitelib}/dnf-plugins/system_upgrade.py
-%doc %{_mandir}/man8/dnf-system-upgrade.*
 
 %if %{with tracer}
 %files -n python-dnf-plugin-tracer
