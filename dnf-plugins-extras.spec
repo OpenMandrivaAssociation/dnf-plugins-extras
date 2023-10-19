@@ -14,7 +14,7 @@
 %bcond_with tracer
 
 Name:		dnf-plugins-extras
-Version:	4.1.0
+Version:	4.1.1
 Release:	1
 Summary:	Extras Plugins for DNF
 Group:		System/Configuration/Packaging
@@ -31,6 +31,7 @@ BuildRequires:	python-setuptools
 BuildRequires:	python-dnf >= %{dnf_lowest_compatible}
 BuildRequires:	python-nose
 BuildRequires:	python-sphinx
+BuildRequires:	python3dist(packaging)
 Obsoletes:	python-dnf-plugin-system-upgrade < 4.1.0
 
 %description
