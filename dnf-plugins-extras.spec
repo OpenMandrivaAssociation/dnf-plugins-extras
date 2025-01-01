@@ -14,7 +14,7 @@
 %bcond_with tracer
 
 Name:		dnf-plugins-extras
-Version:	4.1.1
+Version:	4.1.2
 Release:	1
 Summary:	Extras Plugins for DNF
 Group:		System/Configuration/Packaging
