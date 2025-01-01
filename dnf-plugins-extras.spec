@@ -7,14 +7,14 @@
 # OpenMandriva does not have rpmconf
 %bcond_without rpmconf
 
-# OpenMandriva does not have snapper
-%bcond_with snapper
+# OpenMandriva does have snapper
+%bcond_without snapper
 
 # OpenMandriva does not have tracer
 %bcond_with tracer
 
 Name:		dnf-plugins-extras
-Version:	4.1.1
+Version:	4.1.2
 Release:	1
 Summary:	Extras Plugins for DNF
 Group:		System/Configuration/Packaging
@@ -211,6 +211,7 @@ rm -rf tests/test_rpmconf.*
 
 %if %{with snapper}
 %files -n python-dnf-plugin-snapper
+%{_sysconfdir}/dnf/plugins/snapper.conf
 %{python3_sitelib}/dnf-plugins/snapper.*
 %doc %{_mandir}/man8/dnf-snapper.*
 %endif
