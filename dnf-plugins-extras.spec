@@ -24,6 +24,7 @@ Source0:	https://github.com/rpm-software-management/dnf-plugins-extras/archive/%
 Patch0:		dnf-plugins-core-4.0.4-sphinx-build.patch
 
 BuildArch:	noarch
+BuildRequires:  make
 BuildRequires:	cmake
 BuildRequires:	gettext
 BuildRequires:	pkgconfig(python3)
