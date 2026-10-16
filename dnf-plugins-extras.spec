@@ -15,7 +15,7 @@
 
 Name:		dnf-plugins-extras
 Version:	4.1.2
-Release:	2
+Release:	3
 Summary:	Extras Plugins for DNF
 Group:		System/Configuration/Packaging
 License:	GPLv2+
@@ -27,12 +27,12 @@ BuildArch:	noarch
 BuildRequires:  make
 BuildRequires:	cmake
 BuildRequires:	gettext
-BuildRequires:	pkgconfig(python3)
-BuildRequires:	python-setuptools
+BuildRequires:	pkgconfig(python)
+BuildRequires:	python%{pyver}dist(setuptools)
 BuildRequires:	python-dnf >= %{dnf_lowest_compatible}
-BuildRequires:	python-nose
-BuildRequires:	python-sphinx
-BuildRequires:	python3dist(packaging)
+BuildRequires:	python%{pyver}dist(nose)
+BuildRequires:	python%{pyver}dist(sphinx)
+BuildRequires:	python%{pyver}dist(packaging)
 Obsoletes:	python-dnf-plugin-system-upgrade < 4.1.0
 
 %description
